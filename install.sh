@@ -17,9 +17,9 @@ if [ -d "$BSL" ]
     exit
 fi
 
-echo "${B}Cloning Bash Status Line..."
+echo "${B}Cloning Bash Status Line...${NONE}"
 hash git >/dev/null && /usr/bin/env git clone https://github.com/ADone/bash-status-line.git $BSL || {
-  echo "${R}git not installed"
+  echo "${R}git not installed${NONE}"
   exit
 }
 
