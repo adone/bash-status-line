@@ -1,5 +1,11 @@
 set -e
 
+NONE="\033[0m"    # unsets color to term fg color
+R="\033[0;31m"    # red
+G="\033[0;32m"    # green
+Y="\033[0;33m"    # yellow
+B="\033[0;34m"    # blue
+
 if [ ! -n "$BSL" ]
   then
     BSL=~/.bsl
@@ -12,7 +18,7 @@ if [ -d "$BSL" ]
 fi
 
 echo "${B}Cloning Bash Status Line..."
-hash git >/dev/null && /usr/bin/env git clone  $BSL || {
+hash git >/dev/null && /usr/bin/env git clone https://github.com/ADone/bash-status-line.git $BSL || {
   echo "${R}git not installed"
   exit
 }
