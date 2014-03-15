@@ -5,7 +5,15 @@ Status bar for BASH
 
 ## Installation
 
-TODO: Write installation instructions here
+To install you could use the [install script](https://github.com/adone/bash-status-line/blob/master/install.sh) (requires Git) using cURL:
+
+    curl https://raw.github.com/adone/bash-status-line/v0.0.1-alpha/install.sh | sh
+
+or Wget:
+
+    wget -qO- https://raw.github.com/adone/bash-status-line/v0.0.1-alpha/install.sh | sh
+
+<sub>The script clones the bash-status-line repository to `~/.bsl` and adds the source line to your profile (`~/.bashrc`).</sub>
 
 ## Usage
 
