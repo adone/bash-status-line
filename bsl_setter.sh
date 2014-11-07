@@ -1,6 +1,6 @@
 # displays only the last 25 characters of pwd
 
-set_new_pwd() {
+bsl_set_new_pwd() {
     # How many characters of the $PWD should be kept
     local pwdmaxlen=25
     # Indicate that there has been dir truncation
@@ -18,7 +18,7 @@ set_new_pwd() {
 
 # the name of the git branch in the current directory
 
-set_git_branch() {
+bsl_set_git_branch() {
     unset GIT_BRANCH
     local branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'`;
     if test $branch
@@ -29,7 +29,7 @@ set_git_branch() {
 
 # revision of the svn repo in the current directory
 
-set_svn_rev() {
+bsl_set_svn_rev() {
     unset SVN_REV
     local rev=`svn info 2> /dev/null | grep "Revision" | sed 's/Revision: \(.*\)/r\1 /'`;
     if test $rev
@@ -40,7 +40,7 @@ set_svn_rev() {
 
 # the name of the activated virtual env
 
-set_app_env_base() {
+bsl_set_app_env_base() {
     unset APP_ENV_BASE
     local venv=`basename "$APP_ENV"`
     if test $venv
@@ -49,12 +49,12 @@ set_app_env_base() {
     fi
 }
 
-set_ruby_version() {
+bsl_set_ruby_version() {
     unset CURRENT_RVM_RUBY_VERSION
     CURRENT_RVM_RUBY_VERSION="${EMG}rvm: ${NONE}$(~/.rvm/bin/rvm-prompt)"
 }
 
-set_status_line() {
+bsl_set_status_line() {
     local lines=`tput lines`
     tput sc
     non_scroll_line=$(($lines - 1))
@@ -72,11 +72,11 @@ set_status_line() {
     tput rc
 }
 
-update_status_line() {
-    set_new_pwd
-    set_git_branch
-    set_svn_rev
-    set_ruby_version
-    set_app_env_base
-    set_status_line
+bsl_update_status_line() {
+    bsl_set_new_pwd
+    bsl_set_git_branch
+    bsl_set_svn_rev
+    bsl_set_ruby_version
+    bsl_set_app_env_base
+    bsl_set_status_line
 }

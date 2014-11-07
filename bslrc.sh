@@ -15,7 +15,7 @@ bsl_update_prompt() {
             ${WRAPPED_PROMPT_COMMAND}
     fi
 
-    update_status_line
+    bsl_update_status_line
 }
 
 PROMPT_COMMAND=bsl_update_prompt
