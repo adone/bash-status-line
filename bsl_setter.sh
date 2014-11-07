@@ -60,13 +60,15 @@ set_status_line() {
     non_scroll_line=$(($lines - 1))
     scroll_region="0 $(($lines - 2))"
     tput csr $scroll_region
-    tput cup $non_scroll_line 0
 
     # Clear out the status line
+    tput cup $non_scroll_line 0
     printf "%${COLUMNS}s"
-    # Reprint the status line
-    echo -en "${EMB}[${NONE}${NEW_PWD}${EMB}] ${GIT_BRANCH}${SVN_REV}${CURRENT_RVM_RUBY_VERSION} ${APP_ENV_BASE}"
+    tput rc
 
+    # Reprint the status line
+    tput cup $non_scroll_line 0
+    echo -en "${EMB}[${NONE}${NEW_PWD}${EMB}] ${GIT_BRANCH}${SVN_REV}${CURRENT_RVM_RUBY_VERSION} ${APP_ENV_BASE}"
     tput rc
 }
 
